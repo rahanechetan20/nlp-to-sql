@@ -17,4 +17,5 @@ def generate_sql(question):
     outputs = model.generate(**inputs)
     return tokenizer.decode(outputs[0], skip_special_tokens=True)
 
-print(generate_sql("get me teams who play in premier league and have won more than 4 championships"))
+# print(generate_sql("get me teams from table sporst_team who play in premier league and have won more than 4 championships"))
+print(generate_sql("find top 3 teams which has won maximum trophies"))
