@@ -2,3 +2,7 @@
 sql_generator/model.safetensors
 sql_generator.zip
 sql-generator
+.DS_Store
+sql-generator-nl2sql
+sql_generator-nl2sql/model.safetensors
+sql_generator-nl2sql.zip
