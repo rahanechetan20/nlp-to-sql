@@ -34,7 +34,7 @@ function Login({ onNavigate }: LoginProps) {
       onNavigate();
     }
     else {
-      showMessage("Incorrect username or password!!!!")
+      showMessage("Incorrect username or password!!!!", "error")
     }
   };
   

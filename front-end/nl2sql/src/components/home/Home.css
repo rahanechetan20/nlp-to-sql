@@ -1,0 +1,149 @@
+.elevated-container 
+{ 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background-image: linear-gradient(to bottom right,#7d7d7d 5%, #d4d4d4 80%, #7d7d7d 5% );
+}  
+.elevated-box { 
+    width: 60%; 
+    height: 92vh; 
+    overflow: auto; 
+    background-image: linear-gradient(to top left,#e8e7e7 5%, #d4d4d4 80%, #cbcbcb 5% );
+
+    border-radius: 16px; 
+    box-shadow:  
+        0 4px 6px rgba(0, 0, 0, 0.1), 
+        0 10px 15px rgba(0, 0, 0, 0.15), 
+        0 20px 25px rgba(0, 0, 0, 0.2);  
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    flex-direction: column;
+}
+.chat-container {
+    flex: 1 1 auto;
+    height: 72vh;
+    max-height: 72vh; 
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.message {
+    max-width: 70%;
+    padding: 10px 20px;
+    border-radius: 20px;
+    word-break: break-word;
+    font-family: 'Sans Serif';
+}
+
+.message.user {
+    background: #303030;
+    color: white;
+    align-self: flex-end;
+    text-align: right;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.message.response {
+    /* background: inherit; */
+    font-weight: bold;
+    text-align: left;
+    align-self: flex-start;
+    color: white;
+    background: #757575;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.input-container {
+    flex-shrink: 0;
+    padding: 15px;
+    border-top: 1px solid #ddd;
+    width: 97%;
+    position: relative;
+    margin: 0 auto;
+    padding-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 12px 70px 12px 20px; /* Right padding to make room for buttons */
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 16px;
+}
+.button-wrapper {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    margin-top: 0px!important;
+    align-items: center;
+    justify-content: center;
+}
+.icon-button-1 {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    margin-right: 18px;
+    margin-top: 0px!important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.icon-image {
+    width: 24px;
+    height: 24px;
+}
+
+.icon-button:hover {
+    color: #444;
+}
+.icon-button-1:hover {
+    color: #444;
+}
+
+
+
+.message.response {
+    position: relative;
+}
+  
+.cursor {
+    animation: blink 1s step-end infinite;
+    margin-left: 2px;
+}
+  
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+  
+
+
+.scrollable-hidden {
+    overflow: auto;
+    -ms-overflow-style: none;  /* IE/Edge */
+    scrollbar-width: none;     /* Firefox */
+}
+  
+.scrollable-hidden::-webkit-scrollbar {
+    display: none;  /* Chrome/Safari/Opera */
+}

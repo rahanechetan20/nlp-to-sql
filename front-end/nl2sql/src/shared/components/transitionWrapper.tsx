@@ -24,10 +24,11 @@ export const TransitionWrapper = ({
         ease: [0.22, 1, 0.36, 1]
       }}
       style={{
-        position: 'absolute',
+        position: 'relative',
         width: '100%',
         height: '100%',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        backgroundColor: 'inherit'
       }}
     >
       {children}
