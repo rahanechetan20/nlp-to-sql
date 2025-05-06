@@ -1,9 +1,13 @@
 // Home.tsx
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import sendIcon from '../../assets/images/send.png' // Verify path matches your structure
+import sendIcon from '../../assets/images/send.png';
 import attachIcon from '../../assets/images/attach.png';
 import './Home.css';
 import { Snackbar, Alert, AlertColor } from '@mui/material';
+
+import { useAppDispatch, useAppSelector } from '../../shared/hooks';
+import { queryRequest } from '../../shared/slices/query.slice';
+import { RootState } from '../../shared/store/store';
 
 type Message = {
   message: string;
@@ -11,14 +15,13 @@ type Message = {
   type: 'user' | 'response';
 };
 
-// Create a separate Message component for better animation control
 const MessageDisplay = ({ msg }: { msg: Message }) => {
   const [displayedText, setDisplayedText] = useState('');
 
   const typeWriter = useCallback((text: string, i = 0) => {
     if (i < text.length) {
       setDisplayedText(text.slice(0, i + 1));
-      setTimeout(() => typeWriter(text, i + 1), 40); // Adjust typing speed here
+      setTimeout(() => typeWriter(text, i + 1), 40);
     }
   }, []);
 
@@ -44,27 +47,11 @@ function Home() {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<Message[]>([]);
   const chatEndRef = useRef<HTMLDivElement>(null);
-
-  // Sample initial data
-  const userMessages = [
-    { message: 'hello there', timestamp: '1' },
-    { message: 'hello there2', timestamp: '3' }
-  ];
-  
-  const responseMessages = [
-    { message: 'howdy', timestamp: '2' },
-    { message: 'mamma mia', timestamp: '4' }
-  ];
-
   useEffect(() => {
-    // Merge and sort messages
-    const merged = [
-      ...userMessages.map(m => ({ ...m, type: 'user' as const })),
-      ...responseMessages.map(m => ({ ...m, type: 'response' as const }))
-    ].sort((a, b) => Number(a.timestamp) - Number(b.timestamp));
-    
-    setMessages(merged);
-  }, []);
+    setMessages(prev => 
+      [...prev].sort((a, b) => Number(a.timestamp) - Number(b.timestamp))
+    );
+  }, [messages.length]); 
 
   const scrollToBottom = () => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -87,14 +74,15 @@ function Home() {
     setMessages(prev => [...prev, newUserMessage]);
     
     // Simulate API response
-    setTimeout(() => {
-      const newResponse: Message = {
-        message: `Response to: ${input}`,
-        timestamp: (Date.now() + 1).toString(),
-        type: 'response'
-      };
-      setMessages(prev => [...prev, newResponse]);
-    }, 1000);
+    // setTimeout(() => {
+    //   const newResponse: Message = {
+    //     message: `Response to: ${input}`,
+    //     timestamp: (Date.now() + 1).toString(),
+    //     type: 'response'
+    //   };
+    //   setMessages(prev => [...prev, newResponse]);
+    // }, 1000);
+    handleSubmit(input);
 
     setInput('');
   };
@@ -115,6 +103,26 @@ function Home() {
   const attachClicked = () => {
     showMessage('Functionality not available!! Stay tuned...', 'info');
   }
+
+  //API call
+  const dispatch = useAppDispatch();
+  const { data, loading, error } = useAppSelector((state: RootState) => state.query);
+  const [inputText, setInputText] = useState('');
+
+  const handleSubmit = (inputText: string) => {
+    dispatch(queryRequest({ query: inputText }));
+  };
+  useEffect(() => {
+    if (data) {
+      const newResponseMessage: Message = {
+        message: data.message,
+        timestamp: data.timestamp,
+        type: 'response'
+      };
+      
+      setMessages(prev => [...prev, newResponseMessage]);
+    }
+  }, [data]);
 
   return (
     <div className="elevated-container">

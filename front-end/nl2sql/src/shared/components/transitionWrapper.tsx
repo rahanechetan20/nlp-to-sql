@@ -20,7 +20,7 @@ export const TransitionWrapper = ({
       animate={{ y: 0 }}
       exit={{ y: direction === 'up' ? '-100%' : '100%' }}
       transition={{ 
-        duration: 0.5,
+        duration: 1.5,
         ease: [0.22, 1, 0.36, 1]
       }}
       style={{
