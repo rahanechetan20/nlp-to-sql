@@ -1,25 +1,19 @@
 <h1>NL2SQL Translation System</h1>
 
 End-to-end solution for converting natural language queries to SQL using React frontend and Python backend
-<h3>Repo Structure</h3>
-repo  <br>
-├── front-end  <br>
-│   └── nl2sql  <br>
-│       └── React code (UI components, query interface)  <br>
-├── back-Eend  <br>
-│   └── python code (API endpoints, query processing)  <br>
-└── model_training  <br>
-    ├── ipynb files (model training notebooks)  <br>
-    ├── dataset.csv (training data)  <br>
-    ├── data_cleaning/ (preprocessing scripts)  <br>
-    └── results/ (exported JSON models & tensors)  <br>
+<h3>Repository Structure</h3>
+This repository contains 3 folders, front-end, back-end and model_training<br>
+Folder front-end contains code for React Web UI, along with Redux, Saga and Slices implementation.<br>
+Folder back-end contains code for Python FastAPI code, which is used for APIs which are used for query processing.<br>
+Folder model_training contains all the data used for training the model to predict SQL queries. It contains .ipynb files, dataset csv and resultant model export jsons and tesnors.<br>
+Current stable version of explorted model is inside folder sql_generator-nl2sql, which is generated with help of NL2SQL_Cleaned.csv and model_training-nl2sql.ipynb<br>
 
 
 <h3>Key Features</h3>
 1. Natural language understanding with schema linking<br>
 2. Dynamic few-shot learning implementation<br>
 3. React-based query interface<br>
-![alt text](UI Snapshot.png)
+<img src="./UI Snapshot.png" title="UI Snapshot">
 
 <h3>Installation</h3>
 1. Clone repo<br>
@@ -28,7 +22,8 @@ repo  <br>
     1) cd front-end/nl2sql<br>
     2) npm install  <br>
     Install Python FastAPI dependency and Model use requirements<br>
-    1)cd back-end && pip install -r requirements.txt  <br>
+    1)cd back-end  <br>
+    2) pip install -r requirements.txt  <br>
 
 <h3>Usage</h3>
 - Start backend API using following commands<br>
