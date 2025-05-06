@@ -4,6 +4,5 @@
 /model_training/sql-generator
 /model_training/.DS_Store
 /model_training/sql-generator-nl2sql
-/model_training/sql_generator-nl2sql/model.safetensors
 /model_training/sql_generator-nl2sql.zip
 /front-end/nl2sql/node_modules
