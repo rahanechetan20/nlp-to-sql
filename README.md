@@ -1,6 +1,9 @@
 <h1>NL2SQL Translation System</h1>
 
 End-to-end solution for converting natural language queries to SQL using React frontend and Python backend
+<h3>Demo on YouTube</h3>
+https://youtu.be/ePS7UmnFpZI
+<br>
 <h3>Repository Structure</h3>
 This repository contains 3 folders, front-end, back-end and model_training<br>
 Folder front-end contains code for React Web UI, along with Redux, Saga and Slices implementation.<br>
